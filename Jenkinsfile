@@ -1,3 +1,4 @@
 node {
-    sh "echo hello world"
+    sh "echo branch-2"
+    sh "echo rev2"
 }
