@@ -1,3 +1,3 @@
 node {
-    sh "echo master"
+    sh "echo master1"
 }
