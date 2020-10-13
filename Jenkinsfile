@@ -27,11 +27,5 @@ pipeline {
                 archiveArtifacts(artifacts: 'usefulfile.txt')
             }
         }
-
-        stage("Error") {
-            steps {
-                error("Failed")
-            }
-        }
     }
 }
