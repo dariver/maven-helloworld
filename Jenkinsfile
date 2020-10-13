@@ -9,6 +9,9 @@ pipeline {
                     echo "previousBuild: " + currentBuild.previousBuild
                     if (currentBuild.previousBuild) {
                         try {
+                            echo "Copying files from previous build... " 
+                            echo " ProjectName: " +  currentBuild.projectName
+                            echo " selector: " +  specific("${currentBuild.previousBuild.number}")
                             copyArtifacts(projectName: currentBuild.projectName,
                                           selector: specific("${currentBuild.previousBuild.number}"))
                             def previousFile = readFile(file: "usefulfile.txt")
