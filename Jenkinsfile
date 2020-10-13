@@ -14,13 +14,14 @@ org.apache.commons.lang.exception.ExceptionUtilspipeline {
                             echo " selector: " +  specific("${currentBuild.previousBuild.number}")
                             sh "ls -la"
                             copyArtifacts(projectName: currentBuild.projectName,
-                                          selector: specific("${currentBuild.previousBuild.number}"))
+                                          selector: lastSuccessful())
                             sh "ls -la"
                             def previousFile = readFile(file: "usefulfile.txt")
                             echo("The current build is ${currentBuild.number}")
                             echo("The previous build artifact was: ${previousFile}")
                         } catch(err) {
-                            echo org.apache.commons.lang.exception.ExceptionUtils.getFullStackTrace(err)
+                            
+                            err
                         }
                     }
                 }
@@ -31,6 +32,7 @@ org.apache.commons.lang.exception.ExceptionUtilspipeline {
             steps {
                 echo("Hello")
                 writeFile(file: "usefulfile.txt", text: "This file ${env.BUILD_NUMBER} is useful, need to archive it.")
+                sh "ls -la"
                 archiveArtifacts(artifacts: 'usefulfile.txt')
             }
         }
