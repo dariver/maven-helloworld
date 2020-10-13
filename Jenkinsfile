@@ -1,4 +1,4 @@
-pipeline {
+org.apache.commons.lang.exception.ExceptionUtilspipeline {
     agent any;
 
     stages {
@@ -20,7 +20,7 @@ pipeline {
                             echo("The current build is ${currentBuild.number}")
                             echo("The previous build artifact was: ${previousFile}")
                         } catch(err) {
-                            err.printStackTrace()
+                            echo org.apache.commons.lang.exception.ExceptionUtils.getFullStackTrace(err)
                         }
                     }
                 }
