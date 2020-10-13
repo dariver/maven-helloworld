@@ -5,6 +5,8 @@ pipeline {
         stage("Zeroth stage") {
             steps {
                 script {
+                    echo currentBuild
+                    echo currentBuild.previousBuild
                     if (currentBuild.previousBuild) {
                         try {
                             copyArtifacts(projectName: currentBuild.projectName,
