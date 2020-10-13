@@ -1,6 +1,8 @@
 pipeline {
     agent any;
-
+    options {
+        copyArtifactPermission("$currentBuild.projectName");
+    }
     stages {
         stage("Zeroth stage") {
             steps {
